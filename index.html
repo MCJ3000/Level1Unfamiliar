@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCEA Level 1 English 1.4: Unfamiliar Texts Revision</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+        }
+        .container {
+            max-width: 960px;
+        }
+        .section-title {
+            border-left: 4px solid #4f46e5; /* Indigo border */
+            padding-left: 1rem;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem; /* Rounded corners */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .example-box {
+            background-color: #e0e7ff; /* Light blue background for examples */
+            border-left: 4px solid #6366f1; /* Deeper blue border */
+        }
+        .text-example-card {
+            background-color: #f8fafc; /* Lighter background for text examples */
+            border: 1px solid #cbd5e1; /* Light border */
+            border-radius: 0.5rem;
+        }
+        .activity-box {
+            background-color: #f0f4f8; /* Slightly darker background for activities */
+            border: 1px solid #94a3b8; /* Gray border */
+            border-radius: 0.5rem;
+        }
+
+        /* Flashcard specific styles */
+        .flashcard-container {
+            perspective: 1000px; /* For 3D flip effect */
+            height: 250px; /* Fixed height for flashcard */
+            max-width: 400px; /* Max width for flashcard */
+            margin: 0 auto;
+        }
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            cursor: pointer;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+        .flashcard-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 0.75rem;
+            background-color: #ffffff;
+            color: #333;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        .flashcard-front {
+            background-color: #6366f1; /* Indigo for front */
+            color: white;
+            font-size: 1.5rem;
+        }
+        .flashcard-back {
+            transform: rotateY(180deg);
+            background-color: #e0e7ff; /* Light blue for back */
+            color: #333;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+        .flashcard-controls button {
+            @apply bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-md transition duration-300 ease-in-out;
+        }
+        .flashcard-controls button:disabled {
+            @apply bg-gray-400 cursor-not-allowed;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+    <header class="bg-indigo-700 text-white py-6 shadow-md">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold mb-2">NCEA Level 1 English</h1>
+            <p class="text-xl">Achievement Standard 1.4: Unfamiliar Texts Revision</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <!-- Introduction Section -->
+        <section class="mb-12 card p-6">
+            <h2 class="text-3xl font-semibold mb-4 section-title">Welcome to Your Revision Guide!</h2>
+            <p class="mb-4">This guide is designed to help you prepare for NCEA Level 1 English Achievement Standard 1.4: "Analyse significant aspects of unfamiliar texts through close reading, supported by evidence."</p>
+            <p>The key to success in this standard is to develop strong analytical skills and to be able to identify and explain how different elements of a text contribute to its meaning and purpose, even when you've never seen the text before.</p>
+        </section>
+
+        <!-- Key Concepts Section -->
+        <section class="mb-12 card p-6">
+            <h2 class="text-3xl font-semibold mb-6 section-title">Key Concepts & What to Look For</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-2xl font-medium mb-3 text-indigo-600">1. Purpose</h3>
+                    <p class="mb-2">What is the text trying to achieve? Why was it written?</p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>To inform (e.g., news article, factual report)</li>
+                        <li>To persuade (e.g., advertisement, opinion piece, speech)</li>
+                        <li>To entertain (e.g., story, poem, song lyrics)</li>
+                        <li>To instruct (e.g., recipe, manual)</li>
+                        <li>To describe (e.g., descriptive passage, travelogue)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-medium mb-3 text-indigo-600">2. Audience</h3>
+                    <p class="mb-2">Who is the text written for? How do you know?</p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Age group (children, teenagers, adults)</li>
+                        <li>Interests (sports fans, scientists, general public)</li>
+                        <li>Level of knowledge (expert, beginner)</li>
+                        <li>Relationship (friends, colleagues, customers)</li>
+                        <li>Consider vocabulary, complexity, references.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-medium mb-3 text-indigo-600">3. Language Features</h3>
+                    <p class="mb-2">How does the writer use language to achieve their purpose and affect the audience?</p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><strong>Figurative Language:</strong> Metaphor, Simile, Personification, Hyperbole, Alliteration, Onomatopoeia, Imagery.</li>
+                        <li><strong>Word Choice (Diction):</strong> Connotations, Denotations, formal/informal, emotive language, jargon.</li>
+                        <li><strong>Sentence Structure:</strong> Short/long sentences, simple/complex sentences, rhetorical questions, imperative verbs.</li>
+                        <li><strong>Sound Devices:</strong> Rhyme, Rhythm, Assonance, Consonance (especially in poetry).</li>
+                        <li><strong>Tone:</strong> The writer's attitude towards the subject (e.g., serious, humorous, sarcastic, critical).</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-medium mb-3 text-indigo-600">4. Structure & Form</h3>
+                    <p class="mb-2">How is the text organised? What is its overall shape?</p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><strong>Poetry:</strong> Stanzas, line breaks, rhyme scheme, rhythm.</li>
+                        <li><strong>Prose:</strong> Paragraphs, chapters, narrative arc (beginning, rising action, climax, falling action, resolution).</li>
+                        <li><strong>Non-fiction:</strong> Headings, subheadings, bullet points, introduction, body paragraphs, conclusion.</li>
+                        <li><strong>Genre conventions:</strong> Does it follow typical features of a news report, a short story, a speech?</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategy for Approaching Unfamiliar Texts Section -->
+        <section class="mb-12 card p-6">
+            <h2 class="text-3xl font-semibold mb-6 section-title">Strategy: How to Approach an Unfamiliar Text</h2>
+            <ol class="list-decimal list-inside ml-4 space-y-4">
+                <li>
+                    <h3 class="text-2xl font-medium text-indigo-600">1. First Read-Through (Get the Gist)</h3>
+                    <p>Read the text quickly to get a general understanding. Don't worry about details yet. What's it broadly about? What's your initial impression?</p>
+                </li>
+                <li>
+                    <h3 class="text-2xl font-medium text-indigo-600">2. Second Read-Through (Annotate & Identify)</h3>
+                    <p>Read more carefully. Highlight or make notes on:</p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Any words you don't understand (try to infer meaning from context).</li>
+                        <li>Key ideas or arguments.</li>
+                        <li>Examples of language features (metaphors, similes, strong verbs, emotive words).</li>
+                        <li>Structural elements (e.g., how paragraphs flow, where a new idea is introduced).</li>
+                        <li>Anything that stands out or seems significant.</li>
+                    </ul>
+                </li>
+                <li>
+                    <h3 class="text-2xl font-medium text-indigo-600">3. Analyse (Connect & Explain)</h3>
+                    <p>For each significant aspect you identified, ask yourself:</p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><strong>What</strong> is the feature/technique? (e.g., "The writer uses a metaphor...")</li>
+                        <li><strong>Where</strong> is it in the text? (Quote directly from the text as evidence.)</li>
+                        <li><strong>How</strong> does it work? (Explain its effect on the reader or its contribution to the meaning/purpose.)</li>
+                        <li><strong>Why</strong> is it effective? (Link it back to the writer's overall purpose or message.)</li>
+                    </ul>
+                    <div class="example-box p-4 rounded-md mt-4">
+                        <p class="font-semibold">Example Sentence Structure for Analysis:</p>
+                        <p>"The writer uses <strong>[language feature/structural element]</strong>, such as <strong>'[direct quote from text]'</strong>, to <strong>[explain how it works/its effect]</strong>. This effectively <strong>[link to purpose/audience/meaning]</strong>."</p>
+                    </div>
+                </li>
+                <li>
+                    <h3 class="text-2xl font-medium text-indigo-600">4. Synthesise (Overall Understanding)</h3>
+                    <p>Bring your analysis together. How do all these elements work in combination to create the text's overall meaning, message, or effect?</p>
+                </li>
+            </ol>
+        </section>
+
+        <!-- Text Types Section -->
+        <section class="mb-12 card p-6">
+            <h2 class="text-3xl font-semibold mb-6 section-title">Common Unfamiliar Text Types</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="p-4 border-b-2 border-indigo-300">
+                    <h3 class="text-xl font-medium mb-2 text-indigo-600">Poetry</h3>
+                    <p>Focus on imagery, figurative language, sound devices (rhyme, rhythm, alliteration), tone, structure (stanzas, line breaks), and the emotional impact.</p>
+                </div>
+                <div class="p-4 border-b-2 border-indigo-300">
+                    <h3 class="text-xl font-medium mb-2 text-indigo-600">Prose Fiction (Short Story Excerpt)</h3>
+                    <p>Look at characterisation, setting, plot development, narrative voice, dialogue, descriptive language, and themes.</p>
+                </div>
+                <div class="p-4 border-b-2 border-indigo-300">
+                    <h3 class="text-xl font-medium mb-2 text-indigo-600">Non-Fiction (News Article, Opinion Piece, Speech)</h3>
+                    <p>Identify main arguments, evidence used, rhetorical devices, bias, tone, target audience, and overall message. Consider the use of facts, statistics, anecdotes.</p>
+                </div>
+                <!-- Removed Visual Texts Section -->
+                <div class="p-4 border-b-2 border-indigo-300">
+                    <h3 class="text-xl font-medium mb-2 text-indigo-600">Informative Texts (Fact Sheet, Report)</h3>
+                    <p>Examine clarity, organisation (headings, bullet points), use of technical language, objectivity, and how information is presented for easy understanding.</p>
+                </div>
+                <div class="p-4 border-b-2 border-indigo-300">
+                    <h3 class="text-xl font-medium mb-2 text-indigo-600">Song Lyrics</h3>
+                    <p>Consider poetic devices, narrative, emotional content, rhythm, rhyme, and how the lyrics convey a message or story.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Short Examples Section -->
+        <section class="mb-12 card p-6">
+            <h2 class="text-3xl font-semibold mb-6 section-title">Short Examples: Text, Questions & Responses</h2>
+
+            <!-- Example 1: Poetry Excerpt -->
+            <div class="mb-8 text-example-card p-6">
+                <h3 class="text-2xl font-medium mb-4 text-indigo-600">Example 1: Poetry</h3>
+                <h4 class="text-xl font-semibold mb-2">Text Excerpt:</h4>
+                <div class="bg-gray-50 p-4 rounded-md italic border-l-4 border-gray-300 mb-4">
+                    <p>"The old house sighed in the wind's cold embrace,</p>
+                    <p>Windows like vacant eyes, staring into space.</p>
+                    <p>A whisper of memories, a forgotten tune,</p>
+                    <p>Beneath the pale glow of a silver moon."</p>
+                </div>
+
+                <h4 class="text-xl font-semibold mb-2">Example Questions:</h4>
+                <ul class="list-disc list-inside ml-4 mb-4">
+                    <li>Identify and explain one language feature used in the excerpt.</li>
+                    <li>What is the overall tone created by the poet in these lines? Support your answer with evidence.</li>
+                </ul>
+
+                <h4 class="text-xl font-semibold mb-2">Example Responses:</h4>
+                <div class="example-box p-4 rounded-md mb-4">
+                    <p class="font-semibold">Response 1 (Language Feature):</p>
+                    <p>The poet uses <strong>personification</strong> in the line "The old house sighed in the wind's cold embrace." This gives the house human qualities, suggesting it is tired or sad, which helps to create a melancholic atmosphere and makes the house seem alive and suffering from the weather.</p>
+                </div>
+                <div class="example-box p-4 rounded-md">
+                    <p class="font-semibold">Response 2 (Tone):</p>
+                    <p>The overall tone created by the poet is melancholic and slightly eerie. This is evident through phrases like "vacant eyes," "forgotten tune," and the personification of the house "sighing." These elements suggest a sense of emptiness and past sadness, contributing to a somber mood.</p>
+                </div>
+            </div>
+
+            <!-- Example 2: Prose Excerpt -->
+            <div class="mb-8 text-example-card p-6">
+                <h3 class="text-2xl font-medium mb-4 text-indigo-600">Example 2: Prose Fiction</h3>
+                <h4 class="text-xl font-semibold mb-2">Text Excerpt:</h4>
+                <div class="bg-gray-50 p-4 rounded-md italic border-l-4 border-gray-300 mb-4">
+                    <p>"The bustling market square was a kaleidoscope of colours and sounds. Vendors shouted their wares, a cacophony of voices rising above the clatter of carts and the distant melody of a street musician. A scent of exotic spices mingled with fresh bread, drawing passersby deeper into the vibrant chaos."</p>
+                </div>
+
+                <h4 class="text-xl font-semibold mb-2">Example Questions:</h4>
+                <ul class="list-disc list-inside ml-4 mb-4">
+                    <li>How does the writer use imagery to create a vivid sense of the market square?</li>
+                    <li>What is the effect of the word "cacophony" on the reader's understanding of the market?</li>
+                </ul>
+
+                <h4 class="text-xl font-semibold mb-2">Example Responses:</h4>
+                <div class="example-box p-4 rounded-md mb-4">
+                    <p class="font-semibold">Response 1 (Imagery):</p>
+                    <p>The writer uses strong sensory imagery to bring the market to life. Visual imagery like "kaleidoscope of colours" and auditory imagery such as "cacophony of voices" and "clatter of carts" immerse the reader in the scene. The olfactory imagery of "scent of exotic spices mingled with fresh bread" further enhances the reader's experience, making the market feel vibrant and overwhelming.</p>
+                </div>
+                <div class="example-box p-4 rounded-md">
+                    <p class="font-semibold">Response 2 (Word Choice):</p>
+                    <p>The word "cacophony" effectively conveys the overwhelming and somewhat disorderly nature of the market's sounds. It suggests a harsh and discordant mix of noises, rather than a pleasant blend. This choice of word makes the reader understand that the market is loud and perhaps a little chaotic, contributing to the sense of "vibrant chaos" mentioned later in the text.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Flashcards Activity Section -->
+        <section class="mb-12 card p-6">
+            <h2 class="text-3xl font-semibold mb-6 section-title">Interactive Flashcards: Language Techniques</h2>
+            <p class="mb-6 text-center">Click the card to flip it and reveal the definition/explanation. Use the buttons to navigate through the terms.</p>
+
+            <div class="flashcard-container">
+                <div id="flashcard" class="flashcard">
+                    <div id="flashcard-front" class="flashcard-face flashcard-front"></div>
+                    <div id="flashcard-back" class="flashcard-face flashcard-back"></div>
+                </div>
+            </div>
+
+            <div class="flashcard-controls flex justify-center items-center mt-6 space-x-4">
+                <button id="prev-card" class="px-6 py-3 rounded-lg">Previous</button>
+                <span id="card-counter" class="text-lg font-medium text-gray-700">1 / 10</span>
+                <button id="next-card" class="px-6 py-3 rounded-lg">Next</button>
+            </div>
+        </section>
+
+        <!-- Activities for Practice Section -->
+        <section class="mb-12 card p-6">
+            <h2 class="text-3xl font-semibold mb-6 section-title">Activities for Practice</h2>
+            <p class="mb-6">Test your understanding by analysing the following unfamiliar texts. Remember to use the strategies learned above and support your answers with evidence from the text.</p>
+
+            <!-- Activity 1: Poetry -->
+            <div class="mb-8 activity-box p-6">
+                <h3 class="text-2xl font-medium mb-4 text-indigo-600">Activity 1: Poetry</h3>
+                <h4 class="text-xl font-semibold mb-2">Text Excerpt:</h4>
+                <div class="bg-gray-50 p-4 rounded-md italic border-l-4 border-gray-300 mb-4">
+                    <p>"The river whispers secrets to the stone,</p>
+                    <p>A silver ribbon, silently flowing on.</p>
+                    <p>Willow trees weep, their branches low and deep,</p>
+                    <p>While ancient shadows in the water sleep."</p>
+                </div>
+
+                <h4 class="text-xl font-semibold mb-2">Questions:</h4>
+                <ul class="list-disc list-inside ml-4 mb-4">
+                    <li>Identify and explain one example of personification used in this poem. What is its effect?</li>
+                    <li>How does the poet use imagery to create a peaceful yet slightly melancholic atmosphere?</li>
+                </ul>
+                <p class="mt-4 font-semibold text-indigo-700">Write your responses below:</p>
+                <textarea class="w-full p-3 border border-gray-300 rounded-md mt-2 focus:ring-indigo-500 focus:border-indigo-500" rows="6" placeholder="Your answer for Activity 1..."></textarea>
+            </div>
+
+            <!-- Activity 2: Creative Text (Descriptive Passage) -->
+            <div class="mb-8 activity-box p-6">
+                <h3 class="text-2xl font-medium mb-4 text-indigo-600">Activity 2: Creative Text (Descriptive Passage)</h3>
+                <h4 class="text-xl font-semibold mb-2">Text Excerpt:</h4>
+                <div class="bg-gray-50 p-4 rounded-md italic border-l-4 border-gray-300 mb-4">
+                    <p>"The ancient kauri stood sentinel, its massive trunk a gnarled monument to centuries. Sunlight dappled through its emerald canopy, painting shifting patterns on the forest floor. A hush lay over the clearing, broken only by the gentle rustle of fern fronds and the distant call of a tūī."</p>
+                </div>
+
+                <h4 class="text-xl font-semibold mb-2">Questions:</h4>
+                <ul class="list-disc list-inside ml-4 mb-4">
+                    <li>Identify and explain the effect of one example of imagery used in this excerpt.</li>
+                    <li>How does the writer create a sense of peace and age in this short passage? Refer to specific word choices.</li>
+                </ul>
+                <p class="mt-4 font-semibold text-indigo-700">Write your responses below:</p>
+                <textarea class="w-full p-3 border border-gray-300 rounded-md mt-2 focus:ring-indigo-500 focus:border-indigo-500" rows="6" placeholder="Your answer for Activity 2..."></textarea>
+            </div>
+
+            <!-- Activity 3: Non-Fiction (Biography Excerpt) -->
+            <div class="mb-8 activity-box p-6">
+                <h3 class="text-2xl font-medium mb-4 text-indigo-600">Activity 3: Non-Fiction (Biography)</h3>
+                <h4 class="text-xl font-semibold mb-2">Text Excerpt:</h4>
+                <div class="bg-gray-50 p-4 rounded-md italic border-l-4 border-gray-300 mb-4">
+                    <p>"Born in a small rural town in 1920, Dr. Anya Sharma quickly distinguished herself with a keen intellect and an insatiable curiosity for the natural world. Despite societal expectations, she pursued a degree in botany, often spending her nights in the university library, fueled by coffee and an unwavering determination to unravel the mysteries of plant life. Her groundbreaking research on native flora would later revolutionise ecological conservation efforts."</p>
+                </div>
+
+                <h4 class="text-xl font-semibold mb-2">Questions:</h4>
+                <ul class="list-disc list-inside ml-4 mb-4">
+                    <li>What is the main purpose of this biographical excerpt? How do you know?</li>
+                    <li>Identify two character traits of Dr. Anya Sharma that are revealed in the text and explain how the writer conveys them.</li>
+                </ul>
+                <p class="mt-4 font-semibold text-indigo-700">Write your responses below:</p>
+                <textarea class="w-full p-3 border border-gray-300 rounded-md mt-2 focus:ring-indigo-500 focus:border-indigo-500" rows="6" placeholder="Your answer for Activity 3..."></textarea>
+            </div>
+        </section>
+
+        <!-- Practice Tips Section -->
+        <section class="mb-12 card p-6">
+            <h2 class="text-3xl font-semibold mb-6 section-title">Top Tips for Success</h2>
+            <ul class="list-disc list-inside ml-4 space-y-3">
+                <li><strong>Practice Regularly:</strong> The more unfamiliar texts you read and analyse, the better you'll become.</li>
+                <li><strong>Read Widely:</strong> Expose yourself to different genres, styles, and purposes of writing.</li>
+                <li><strong>Build Vocabulary:</strong> A strong vocabulary helps you understand texts more easily.</li>
+                <li><strong>Time Management:</strong> In an exam, allocate your time wisely across the texts and questions.</li>
+                <li><strong>Use Evidence:</strong> Always support your points with direct quotes from the text.</li>
+                <li><strong>Explain "How" and "Why":</strong> Don't just identify a feature; explain *how* it works and *why* the writer used it.</li>
+                <li><strong>Stay Calm:</strong> It's called "unfamiliar" for a reason! Trust your skills and apply the strategies.</li>
+            </ul>
+        </section>
+
+        <!-- Call to Action/Further Resources (Placeholder) -->
+        <section class="text-center card p-6 bg-indigo-100">
+            <h2 class="text-2xl font-semibold mb-4 text-indigo-700">Ready to Practice?</h2>
+            <p class="mb-4">Look for past NCEA exam papers and practice analysing texts using the strategies above. Good luck!</p>
+            <a href="https://www.nzqa.govt.nz/ncea/assessment/past-papers/" target="_blank" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out">
+                Find Past NZQA Papers
+            </a>
+        </section>
+    </main>
+
+    <footer class="bg-indigo-700 text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 NCEA Revision Guide. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const flashcards = [
+            { term: "Metaphor", definition: "A figure of speech where a word or phrase is applied to an object or action to which it is not literally applicable, suggesting a resemblance without using 'like' or 'as'." },
+            { term: "Simile", definition: "A figure of speech involving the comparison of one thing with another thing of a different kind, used to make a description more emphatic or vivid, using 'like' or 'as'." },
+            { term: "Personification", definition: "The attribution of a personal nature or human characteristics to something non-human, or the representation of an abstract quality in human form." },
+            { term: "Alliteration", definition: "The occurrence of the same letter or sound at the beginning of adjacent or closely connected words." },
+            { term: "Onomatopoeia", definition: "The formation of a word from a sound associated with what is named (e.g., cuckoo, sizzle)." },
+            { term: "Imagery", definition: "Visually descriptive or figurative language, especially in a literary work, appealing to one or more of the five senses (sight, sound, smell, touch, taste)." },
+            { term: "Rhetorical Question", definition: "A question asked in order to create a dramatic effect or to make a point rather than to get an answer." },
+            { term: "Emotive Language", definition: "Words used to evoke an emotional response in the audience, often to persuade or influence." },
+            { term: "Hyperbole", definition: "Exaggerated statements or claims not meant to be taken literally, used for emphasis or effect." },
+            { term: "Repetition", definition: "The action of repeating something that has already been said or written, for emphasis or effect." },
+            { term: "Juxtaposition", definition: "The fact of two things being seen or placed close together with contrasting effect." },
+            { term: "Symbolism", definition: "The use of symbols to represent ideas or qualities." }
+        ];
+
+        let currentCardIndex = 0;
+        const flashcardElement = document.getElementById('flashcard');
+        const flashcardFront = document.getElementById('flashcard-front');
+        const flashcardBack = document.getElementById('flashcard-back');
+        const prevButton = document.getElementById('prev-card');
+        const nextButton = document.getElementById('next-card');
+        const cardCounter = document.getElementById('card-counter');
+
+        // Function to update the flashcard content
+        function updateFlashcard() {
+            flashcardFront.textContent = flashcards[currentCardIndex].term;
+            flashcardBack.textContent = flashcards[currentCardIndex].definition;
+            cardCounter.textContent = `${currentCardIndex + 1} / ${flashcards.length}`;
+            // Disable/enable buttons based on current index
+            prevButton.disabled = currentCardIndex === 0;
+            nextButton.disabled = currentCardIndex === flashcards.length - 1;
+            // Ensure card is flipped to front when changing
+            flashcardElement.classList.remove('flipped');
+        }
+
+        // Event listener for flipping the card
+        flashcardElement.addEventListener('click', () => {
+            flashcardElement.classList.toggle('flipped');
+        });
+
+        // Event listener for previous button
+        prevButton.addEventListener('click', () => {
+            if (currentCardIndex > 0) {
+                currentCardIndex--;
+                updateFlashcard();
+            }
+        });
+
+        // Event listener for next button
+        nextButton.addEventListener('click', () => {
+            if (currentCardIndex < flashcards.length - 1) {
+                currentCardIndex++;
+                updateFlashcard();
+            }
+        });
+
+        // Initialize the first card on load
+        window.onload = updateFlashcard;
+    </script>
+</body>
+</html>
